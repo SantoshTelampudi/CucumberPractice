@@ -2,10 +2,13 @@ package stepDefentions;
 
 import java.util.List;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 
 import driverFactory.DriverFactory;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,12 +18,15 @@ import pageClass.HomePage;
 
 public class AllStepDefentionfile {
 	
+	
+	
 	HomePage homepage = new HomePage(DriverFactory.getDriver());
 	
    
    @Given("User enters the URL")
    public void user_enters_the_URL() {
        DriverFactory.getDriver().get("http://automationpractice.com/index.php");
+     
        
    }
 
