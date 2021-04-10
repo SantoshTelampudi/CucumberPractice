@@ -1,4 +1,4 @@
-package stepDefentions;
+package testRunner;
 
 import org.junit.runner.RunWith;
 
@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 
 		tags = "@firstfeaturefile", features = "src/test/resources/featurefiles", glue = {
-				"stepDefentions" }, monochrome = true, plugin = { "pretty",
+				"stepDefentions","appHooks"}, plugin = { "pretty",
 						"json:target/reprots/jsonreport/report.json" })
 
 public class TestRunner {
