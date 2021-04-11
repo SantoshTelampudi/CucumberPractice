@@ -1,55 +1,104 @@
 package pageClass;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
-public class HomePage {
+import utility.ElementActions;
+
+public class HomePage extends ElementActions {
 	
-	private WebDriver driver;
+
+	public WebDriver driver;
 	
-	private By LoginButton = By.xpath("//a[contains(@title,'Log in')]");
+	//private By LoginButton = By.xpath("//a[contains(@title,'Log in')]");
+	@FindBy(xpath = "//a[contains(@title,'Log in')]")
+	WebElement LoginButton;
 	
-	private By ContactUsButton = By.xpath("//div[contains(@id,'contact')]");
-	private By Logo = By.xpath("//img[contains(@class,'logo')]");
-	private By WomenButton = By.xpath("//a[contains(@title,'Women')]");
-	private By DressesButton = By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a");
-	private By TshirtsButton = By.xpath("//*[@id=\"block_top_menu\"]/ul/li[3]/a");
-	private By Contactus = By.xpath("//span[contains(@class,'shop')]");
-	private By Searchinputfield = By.xpath("//input[contains(@name,'search')]");
-	private By SearchButton = By.xpath("//button[contains(@name,'submit_sea')]");
-	private By PopularButton = By.xpath("//ul[contains(@id,'home-page')]/li[1]");
-	private By BestSellers = By.xpath("//ul[contains(@id,'home-page')]/li[1]");
-	private By Followus = By.xpath("//*[@id=\"social_block\"]/h4");
+	@FindBy(xpath = "\"//div[contains(@id,'contact')]")
+	WebElement ContactUsButton;
+	
+	@FindBy(xpath="//img[contains(@class,'logo')]")
+	WebElement Logo;
+	
+	@FindBy(xpath="//a[contains(@title,'Women')]")
+	WebElement WomenButton;
+	
+	@FindBy(xpath="//*[@id=\"block_top_menu\"]/ul/li[2]/a")
+	WebElement DressesButton;
+	
+	@FindBy(xpath="//*[@id=\"block_top_menu\"]/ul/li[3]/a")
+	WebElement TshirtsButton;
+	
+	@FindBy(xpath="//input[contains(@name,'search')]")
+	WebElement SearchInputField;
+	
+	@FindBy(xpath="\"//button[contains(@name,'submit_sea')]\"")
+	WebElement SearchButton;
+	
+
+	@FindBy(xpath="//ul[contains(@id,'home-page')]/li[1]")
+	WebElement BestSellers;
+	
+	@FindBy(xpath="//*[@id=\"social_block\"]/h4")
+	WebElement Followus;
+	
+	
 
 
-	public HomePage(WebDriver driver)
-	{
-		this.driver = driver;
+	public HomePage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
 	}
-	public boolean  VerifyLoginButton() {
+
 	
-	return driver.findElement(LoginButton).isDisplayed();
+	public void  VerifyLoginButton() throws InterruptedException {
 		
+		Thread.sleep(1000);
+		try {
+			Assert.assertTrue(isElementDisplayed(LoginButton));
+		}
+		catch (Exception | Error e)
+		{
+			System.out.println("Unable to find Element");
+		}
 	}
-	
-	public boolean VerifycontacusButton()
+	public void VerifycontacusButton() throws Exception
 	{
-		return driver.findElement(ContactUsButton).isDisplayed();
+		Thread.sleep(1000);
+		try {
+			Assert.assertTrue(isElementDisplayed(ContactUsButton));
+		}
+		catch (Exception | Error e)
+		{
+			System.out.println("Hi");
+		}
 	}
 	
 	public void enterTextinSearchinputfield(String search)
 	{
 	
-		driver.findElement(Searchinputfield).sendKeys(search);
+		sendKeys(SearchInputField,"New Models");
 	}
 
-	public boolean verifyFollowusButton()
+	public void verifyFollowusButton() throws Exception
 	{
-		return driver.findElement(Followus).isDisplayed();
+		Thread.sleep(1000);
+		try {
+			Assert.assertTrue(isElementDisplayed(Followus));
+		}
+		catch (Exception | Error e)
+		{
+			System.out.println("Hi");
+		}
 	}
 
 

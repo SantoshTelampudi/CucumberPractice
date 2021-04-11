@@ -13,13 +13,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageClass.HomePage;
+import utility.ElementActions;
 
 
 
 public class AllStepDefentionfile {
 	
 	
-	
+	ElementActions elementactions = new ElementActions(DriverFactory.getDriver());
 	HomePage homepage = new HomePage(DriverFactory.getDriver());
 	
    
@@ -37,21 +38,21 @@ public class AllStepDefentionfile {
    }
 
    @Then("Veriify LoginIn button")
-   public void veriify_login_in_button() {
+   public void veriify_login_in_button() throws InterruptedException {
 	   
-	   Assert.assertTrue(homepage.VerifyLoginButton());       
+	   homepage.VerifyLoginButton();       
        
    }
 
    @Then("Verify contactUs button")
-   public void verify_contact_us_button() {
-	   Assert.assertTrue(homepage.VerifycontacusButton());  
+   public void verify_contact_us_button() throws Exception {
+	   homepage.VerifycontacusButton();  
        
    }
 
    @Then("Verify followus button")
-   public void verify_followus_button() {
-	   Assert.assertTrue(homepage.verifyFollowusButton());
+   public void verify_followus_button() throws Exception {
+	   homepage.verifyFollowusButton();
        
    }
 
