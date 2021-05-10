@@ -7,6 +7,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 
+   <repositories>
+             <repository>
+                 <id>jitpack.io</id>
+                 <url>https://jitpack.io</url>
+             </repository>
+    </repositories>
+    
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,12 +28,6 @@
 
 
 	<dependencies>
-
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>4.2.2</version>
-		</dependency>
 
 		<dependency>
 			<groupId>tech.grasshopper</groupId>
@@ -101,6 +102,13 @@
 			<version>3.141.59</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
+			<artifactId>pdfbox2-layout</artifactId>
+			<version>0.8.6</version>
+		</dependency>
+
+
 	</dependencies>
 
 
@@ -125,13 +133,15 @@
 				<version>${maven.surefire.version}</version>
 				<configuration>
 					<includes>
-						<include>**/ParallelRun.java</include>
+						<include>**/TestRunner.java</include>
 					</includes>
 					<parallel>methods</parallel>
 					<threadCount>4</threadCount>
 					<useUnlimitedThreads>false</useUnlimitedThreads>
 				</configuration>
 			</plugin>
+			
+			
 
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
 				<version>3.0.0-M3</version> <executions> <execution> <goals> <goal>integration-test</goal> 
