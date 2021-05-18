@@ -18,14 +18,13 @@ public class ElementActions {
 		this.driver = driver;
 	}
 
-	public boolean isElementDisplayed(WebElement element) {
+	public boolean isElementDisplayed(By contactUsButton) {
 		try {
 			this.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-			element.isDisplayed();
-			element.isEnabled();
+		    ((WebElement) contactUsButton).isDisplayed();
 			return true;
 		} catch (Exception | Error e) {
-			return false;
+			throw e;
 		}
 	}
 
@@ -37,6 +36,7 @@ public class ElementActions {
 
 		} catch (Exception | Error e) {
 			System.out.println("Unable to scrool");
+			throw e;
 		}
 	}
 
@@ -47,6 +47,7 @@ public class ElementActions {
 					element);
 		} catch (Exception | Error e) {
 			System.out.println("Unable to highlight the element");
+			throw e;
 		}
 	}
 
@@ -56,16 +57,19 @@ public class ElementActions {
 			return true;
 		} catch (Exception | Error e) {
 			System.out.println("Unable to click on the Element");
-			return false;
+			
+			throw e;
 		}
 
 	}
 
-	public void sendKeys(WebElement element, String text) {
+	public boolean sendKeys(WebElement element, String text) {
 		try {
 			element.sendKeys(text);
+			return true;
 		} catch (Exception | Error e) {
 			System.out.println("Unable to send the text");
+			return false;
 		}
 	}
 
