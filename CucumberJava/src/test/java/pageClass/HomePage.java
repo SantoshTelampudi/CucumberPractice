@@ -1,30 +1,25 @@
 package pageClass;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
+import driverFactory.DriverFactory;
 import utility.ElementActions;
 
-public class HomePage extends ElementActions {
+public class HomePage {
 	
 
 	public WebDriver driver;
 	
 	//private By LoginButton = By.xpath("//a[contains(@title,'Log in')]");
-	@FindBy(xpath = "//a[contains(@title,'Log in')]")
+	@FindBy(xpath = "//a[normalize-space()=\'Sign in\']")
 	WebElement LoginButton;
 	
-	@FindBy(xpath = "\"//div[contains(@id,'contact')]")
-	WebElement ContactUsButton;
+	private  By ContactUsButton = By.xpath("//div[@id=\"contact-link\"]");
+	//@FindBy(xpath = "\"//div[contains(@id,'contact')]")
+	//WebElement ContactUsButton;
 	
 	@FindBy(xpath="//img[contains(@class,'logo')]")
 	WebElement Logo;
@@ -38,8 +33,9 @@ public class HomePage extends ElementActions {
 	@FindBy(xpath="//*[@id=\"block_top_menu\"]/ul/li[3]/a")
 	WebElement TshirtsButton;
 	
-	@FindBy(xpath="//input[contains(@name,'search')]")
-	WebElement SearchInputField;
+	private By SearchInputField = By.xpath("//input[@id=\"search_query_top\"]");
+	//@FindBy(xpath="//input[@id=\"search_query_top\"]")
+	//WebElement SearchInputField;
 	
 	@FindBy(xpath="\"//button[contains(@name,'submit_sea')]\"")
 	WebElement SearchButton;
@@ -55,49 +51,39 @@ public class HomePage extends ElementActions {
 
 
 	public HomePage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
+	   this.driver = driver;
 	}
+   
 
 	
-	public void  VerifyLoginButton() throws InterruptedException {
+	public void  VerifyLoginButton() throws InterruptedException  {
 		
-		Thread.sleep(1000);
-		try {
-			Assert.assertTrue(isElementDisplayed(LoginButton));
-		}
-		catch (Exception | Error e)
-		{
-			System.out.println("Unable to find Element");
-		}
+
+		
+		
 	}
 	public void VerifycontacusButton() throws Exception
 	{
-		Thread.sleep(1000);
-		try {
-			Assert.assertTrue(isElementDisplayed(ContactUsButton));
-		}
-		catch (Exception | Error e)
-		{
-			System.out.println("Hi");
-		}
+		
+		driver.findElement(ContactUsButton).isDisplayed();
 	}
 	
 	public void enterTextinSearchinputfield(String search)
 	{
 	
-		sendKeys(SearchInputField,"New Models");
+		driver.findElement(SearchInputField).sendKeys(search);
 	}
 
-	public void verifyFollowusButton() throws Exception
+	public boolean verifyFollowusButton() throws Exception
 	{
 		Thread.sleep(1000);
 		try {
-			Assert.assertTrue(isElementDisplayed(Followus));
+			//Assert.assertTrue(isElementDisplayed(Followus));
+			return true;
 		}
 		catch (Exception | Error e)
 		{
-			System.out.println("Hi");
+			throw  e;
 		}
 	}
 

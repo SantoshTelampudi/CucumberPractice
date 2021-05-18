@@ -1,14 +1,8 @@
 package stepDefentions;
 
-import java.util.List;
-
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.testng.Assert;
+import org.openqa.selenium.By;
 
 import driverFactory.DriverFactory;
-import io.cucumber.datatable.DataTable;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -46,7 +40,8 @@ public class AllStepDefentionfile {
 
    @Then("Verify contactUs button")
    public void verify_contact_us_button() throws Exception {
-	   homepage.VerifycontacusButton();  
+	  // DriverFactory.getDriver().findElement(By.xpath("//div[@id=\"contact-link\"]")).isDisplayed(); 
+	   homepage.VerifycontacusButton();
        
    }
 

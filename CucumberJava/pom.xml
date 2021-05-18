@@ -7,13 +7,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 
-   <repositories>
-             <repository>
-                 <id>jitpack.io</id>
-                 <url>https://jitpack.io</url>
-             </repository>
-    </repositories>
-    
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -88,10 +88,11 @@
 
 
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -140,8 +141,8 @@
 					<useUnlimitedThreads>false</useUnlimitedThreads>
 				</configuration>
 			</plugin>
-			
-			
+
+
 
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
 				<version>3.0.0-M3</version> <executions> <execution> <goals> <goal>integration-test</goal> 
