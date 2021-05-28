@@ -3,6 +3,8 @@ package pageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import driverFactory.DriverFactory;
@@ -13,19 +15,15 @@ public class HomePage {
 
 	public WebDriver driver;
 	
-	//private By LoginButton = By.xpath("//a[contains(@title,'Log in')]");
-	@FindBy(xpath = "//a[normalize-space()=\'Sign in\']")
-	WebElement LoginButton;
+	private By LoginButton = By.xpath("//a[normalize-space()='Sign in']");
 	
-	private  By ContactUsButton = By.xpath("//div[@id=\"contact-link\"]");
-	//@FindBy(xpath = "\"//div[contains(@id,'contact')]")
-	//WebElement ContactUsButton;
+	private  By ContactUsButton = By.xpath("//div[@id=\"contact-link\"]");	
 	
-	@FindBy(xpath="//img[contains(@class,'logo')]")
-	WebElement Logo;
+	private By Logo = By.xpath("//img[contains(@class,'logo')]");
 	
-	@FindBy(xpath="//a[contains(@title,'Women')]")
-	WebElement WomenButton;
+	private By WomenButton = By.xpath("//a[contains(@title,'Women')]");
+	
+	
 	
 	@FindBy(xpath="//*[@id=\"block_top_menu\"]/ul/li[2]/a")
 	WebElement DressesButton;
@@ -48,7 +46,7 @@ public class HomePage {
 	WebElement Followus;
 	
 	
-
+	ElementActions elementactions = new ElementActions((DriverFactory.getDriver()));
 
 	public HomePage(WebDriver driver) {
 	   this.driver = driver;
@@ -56,9 +54,20 @@ public class HomePage {
    
 
 	
-	public void  VerifyLoginButton() throws InterruptedException  {
-		
+	public boolean  VerifyLoginButton() throws InterruptedException  {
 
+		Actions action = new Actions(driver);
+		
+		
+	
+		try {
+		return elementactions.isElementDisplayed(LoginButton);
+		
+		}
+		catch (Exception | Error e)
+		{
+			throw e;
+		}
 		
 		
 	}
