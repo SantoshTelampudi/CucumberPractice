@@ -18,10 +18,10 @@ public class ElementActions {
 		this.driver = driver;
 	}
 
-	public boolean isElementDisplayed(By contactUsButton) {
+	public boolean isElementDisplayed(By element) {
 		try {
 			this.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		    ((WebElement) contactUsButton).isDisplayed();
+		    driver.findElement(element).isDisplayed();
 			return true;
 		} catch (Exception | Error e) {
 			throw e;

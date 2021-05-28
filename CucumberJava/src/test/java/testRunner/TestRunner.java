@@ -11,6 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 		tags = "@firstfeaturefile", features = "src/test/resources/featurefiles", glue = {
 				"stepDefentions","appHooks"}, 
 		stepNotifications = true,
+		monochrome = true,
 		plugin = { "pretty","json:target/Destination/cucumber.json" })
 
 public class TestRunner {
